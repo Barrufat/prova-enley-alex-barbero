@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Character } from '../../../services/character/character.model';
-import { CharacterService } from '../../../services/character/character.service';
+import { Character } from '../../services/character/character.model';
+import { CharacterService } from '../../services/character/character.service';
+import { CharacterListComponent } from '../../components/character-list/character-list.component';
 
 @Component({
   selector: 'characters-page',
   standalone: true,
-  imports: [],
+  imports: [CharacterListComponent],
   templateUrl: './characters-page.component.html',
   styleUrl: './characters-page.component.scss',
 })

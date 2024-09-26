@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CharacterService } from '../services/character/character.service';
-import { CharactersPageComponent } from '../pages/CharactersPage/characters-page/characters-page.component';
+import { CharactersPageComponent } from '../pages/characters-page/characters-page.component';
 
 @Component({
   selector: 'app-root',
