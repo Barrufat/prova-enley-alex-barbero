@@ -1,6 +1,6 @@
-<article>
-  <figure>
-    <img class="w-64" [src]="character.image" [alt]="character.name" />
-  </figure>
-  <span class="card-title mb-2">{{ character.name }}</span>
+<article class="character">
+  <img class="character__image" [src]="character.image" [alt]="character.name" />
+  <div class="character__info">
+    <span class="character__name">{{ character.name }}</span>
+  </div>
 </article>

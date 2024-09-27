@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  color: #fff;
+  background-color: #161616;
+  padding: 20px;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
