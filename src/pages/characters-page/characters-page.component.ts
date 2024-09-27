@@ -16,9 +16,8 @@ export class CharactersPageComponent implements OnInit {
   constructor(private readonly characterService: CharacterService) {}
 
   ngOnInit(): void {
-    this.characterService.getCharacters('1').subscribe((data) => {
-      this.characters = data.results;
-      console.log('characters: ', this.characters);
+    this.characterService.characters.subscribe((data) => {
+      this.characters = data;
     });
   }
 }

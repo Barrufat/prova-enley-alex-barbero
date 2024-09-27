@@ -1,24 +1,52 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiResponse, Character } from './character.model';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+
+interface Search {
+  characterName: string;
+  page: number;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class CharacterService {
   private readonly CHARACTER_PAGE_API =
-    'https://rickandmortyapi.com/api/character/?page=';
+    'https://rickandmortyapi.com/api/character/';
 
-  constructor(private readonly httpClient: HttpClient) {}
+  private charactersSubject = new BehaviorSubject<Character[]>([]);
+  characters = this.charactersSubject.asObservable();
 
-  public getCharacterByURL(url: string): Observable<Character> {
-    return this.httpClient.get<Character>(url);
+  private searchSubject = new BehaviorSubject<Search>({
+    characterName: '',
+    page: 1,
+  });
+  search = this.searchSubject.asObservable();
+
+  constructor(private readonly httpClient: HttpClient) {
+    this.getCharacters();
   }
 
-  public getCharacters(page: string): Observable<ApiResponse<Character[]>> {
-    return this.httpClient.get<ApiResponse<Character[]>>(
-      this.CHARACTER_PAGE_API + page
+  searchByName(name: string | null) {
+    this.searchSubject.next({
+      ...this.searchSubject.value,
+      characterName: name ? name : '',
+    });
+    this.getCharacters();
+  }
+
+  public getCharacters(): void {
+    const response = this.httpClient.get<ApiResponse<Character[]>>(
+      this.CHARACTER_PAGE_API +
+        '?page=' +
+        this.searchSubject.value.page +
+        '&name=' +
+        this.searchSubject.value.characterName
+    );
+
+    response.subscribe((response) =>
+      this.charactersSubject.next(response.results!)
     );
   }
 }
