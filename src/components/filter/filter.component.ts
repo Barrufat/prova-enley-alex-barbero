@@ -27,12 +27,12 @@ export class FilterComponent {
 
   ngOnInit() {
     this.characterName.valueChanges.subscribe(
-      (value) => value && this.characterService.searchByName(value)
+      (value) => value && this.characterService.updateSearchName(value)
     );
   }
 
   resetCharacterName() {
     this.characterName.setValue('');
-    this.characterService.searchByName(this.characterName.value);
+    this.characterService.updateSearchName(this.characterName.value);
   }
 }

@@ -1,3 +1,4 @@
 <section class="characters-page-wrapper">
-  <character-list [characters]="characters"></character-list>
+  <character-list [characters]="characters" (updateCharacter)="onUpdateCharacter($event)"></character-list>
 </section>
+<character-paginator></character-paginator>

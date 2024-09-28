@@ -3,7 +3,7 @@
 @import "./custom-theme.scss";
 
 :root {
-  @include mat.all-component-themes($light-custom-theme);
+  @include mat.all-component-themes($custom-theme);
 }
 
 *,
@@ -19,9 +19,8 @@ html {
 
 body {
   margin: 0;
-  color: #fff;
-  background-color: #161616;
-  padding: 20px;
+  color: #c5e8f4;
+  background-color: #001317;
 }
 ul,
 li {

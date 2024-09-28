@@ -4,24 +4,27 @@
 
   &__image {
     width: 100%;
-    border-radius: 5px;
+    border: solid 3px #161616;
+    border-radius: 6px;
   }
 
   &__info {
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 0 0 5px 5px;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: #00131783;
     overflow-wrap: anywhere;
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 
   &__name {
-    color: white;
+    color: #c5e8f4;
     font-size: 12px;
+    width: 80%;
   }
 }

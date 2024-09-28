@@ -1,10 +1,16 @@
+.characters-list {
+  position: relative;
+}
+
 .characters-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   justify-items: center;
   justify-content: space-around;
-  position: relative;
+  z-index: 0;
+  margin-top: 20vh;
+  margin-bottom: 25vh;
 
   @media (max-width: 600px) {
     grid-template-columns: repeat(4, 1fr);
@@ -12,7 +18,40 @@
   }
 
   @media (max-width: 390px) {
+    margin-top: 30vh;
+    padding: 0 20px;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+  }
+}
+
+.portal-detail {
+  @media (max-width: 390px) {
+    width: 100vw;
+    height: 200px;
+    position: fixed;
+    bottom: 8vh;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+
+    &--front {
+      background-image: url("../../../public/portal-front.png");
+      z-index: 2;
+      height: 110px;
+    }
+
+    &--middle {
+      background-color: #001317;
+      height: 120px;
+      bottom: 0;
+      z-index: 1;
+    }
+
+    &--back {
+      background-image: url("../../../public/portal-back.png");
+      z-index: -1;
+    }
   }
 }

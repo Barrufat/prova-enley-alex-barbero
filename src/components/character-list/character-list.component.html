@@ -1,7 +1,12 @@
-<ul class="characters-container">
-  @for(character of characters; track character.id){
-  <li>
-    <character-card [character]="character"></character-card>
-  </li>
-  }
-</ul>
+<section class="characters-list">
+  <ul class="characters-container">
+    @for(character of characters; track character.id){
+    <li>
+      <character-card [character]="character" (updateCharacter)="onUpdateCharacter(character.id)"></character-card>
+    </li>
+    }
+  </ul>
+  <div class="portal-detail portal-detail--front"></div>
+  <div class="portal-detail portal-detail--middle"></div>
+  <div class="portal-detail portal-detail--back"></div>
+</section>

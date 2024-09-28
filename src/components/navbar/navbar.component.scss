@@ -5,8 +5,10 @@
   display: flex;
   z-index: 1;
   padding: 20px;
-  background: linear-gradient(to top, #16161600 5%, #16161679 20%, #161616 55%);
+  background: linear-gradient(to top, #00131700 5%, #0013175d 20%, #001317 55%);
   width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
 
   &__hero-title {
     width: 200px;

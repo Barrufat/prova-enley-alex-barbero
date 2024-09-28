@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Character } from '../../services/character/character.model';
 import { CharacterCardComponent } from '../character-card/character-card.component';
 
@@ -11,4 +11,9 @@ import { CharacterCardComponent } from '../character-card/character-card.compone
 })
 export class CharacterListComponent {
   @Input() characters?: Character[];
+  @Output() updateCharacter: EventEmitter<number> = new EventEmitter();
+
+  onUpdateCharacter(characterId: number) {
+    this.updateCharacter.emit(characterId);
+  }
 }

@@ -2,5 +2,7 @@
   <img class="character__image" [src]="character.image" [alt]="character.name" />
   <div class="character__info">
     <span class="character__name">{{ character.name }}</span>
+    <mat-icon aria-hidden="false" aria-label="more-info" fontIcon="info" (click)="updateDetailCharacter()"></mat-icon>
+
   </div>
 </article>
