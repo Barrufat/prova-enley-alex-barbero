@@ -12,8 +12,13 @@ import { CharacterCardComponent } from '../character-card/character-card.compone
 export class CharacterListComponent {
   @Input() characters?: Character[];
   @Output() updateCharacter: EventEmitter<number> = new EventEmitter();
+  @Output() deleteCharacter: EventEmitter<number> = new EventEmitter();
 
   onUpdateCharacter(characterId: number) {
     this.updateCharacter.emit(characterId);
+  }
+
+  onDeleteCharacter(characterId: number) {
+    this.deleteCharacter.emit(characterId);
   }
 }

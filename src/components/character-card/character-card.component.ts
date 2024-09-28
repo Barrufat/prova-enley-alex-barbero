@@ -12,8 +12,13 @@ import { MatIconModule } from '@angular/material/icon';
 export class CharacterCardComponent {
   @Input() character!: Character;
   @Output() updateCharacter: EventEmitter<void> = new EventEmitter();
+  @Output() deleteCharacter: EventEmitter<void> = new EventEmitter();
 
   updateDetailCharacter() {
     this.updateCharacter.emit();
+  }
+
+  eliminateCharacter() {
+    this.deleteCharacter.emit();
   }
 }

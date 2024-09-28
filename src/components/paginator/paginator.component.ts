@@ -11,11 +11,13 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 })
 export class PaginatorComponent {
   totalCharacters?: number;
+  currentPage?: number;
 
   constructor(private readonly characterService: CharacterService) {
-    this.characterService.search.subscribe(
-      (search) => (this.totalCharacters = search.total)
-    );
+    this.characterService.search.subscribe((search) => {
+      (this.totalCharacters = search.total),
+        (this.currentPage = search.page - 1);
+    });
   }
 
   handlePageEvent(pageEvent: PageEvent) {

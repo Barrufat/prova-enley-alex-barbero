@@ -10,8 +10,15 @@
   justify-content: space-between;
   align-items: flex-start;
 
+  &__controlls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
   &__hero-title {
     width: 200px;
+    cursor: pointer;
 
     @media (max-width: 390px) {
       width: 100%;
@@ -24,4 +31,10 @@
     align-items: center;
     gap: 10px;
   }
+}
+
+.mat-icon {
+  font-size: xx-large;
+  height: 50px;
+  width: 50px;
 }

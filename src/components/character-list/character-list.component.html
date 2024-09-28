@@ -2,7 +2,8 @@
   <ul class="characters-container">
     @for(character of characters; track character.id){
     <li>
-      <character-card [character]="character" (updateCharacter)="onUpdateCharacter(character.id)"></character-card>
+      <character-card [character]="character" (updateCharacter)="onUpdateCharacter(character.id)"
+        (deleteCharacter)="onDeleteCharacter(character.id)"></character-card>
     </li>
     }
   </ul>

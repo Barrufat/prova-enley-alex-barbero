@@ -1,4 +1,8 @@
 <nav class="navbar">
   <img class="navbar__hero-title" src="hero-title.png" alt="hero-title" (click)="goToHome()">
-  <character-filter></character-filter>
+  <div class="navbar__controlls">
+    <mat-icon aria-hidden="false" aria-label="add" fontIcon="post_add" (click)="goToAddNew()"></mat-icon>
+    <character-filter></character-filter>
+
+  </div>
 </nav>

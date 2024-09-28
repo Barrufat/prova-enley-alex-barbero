@@ -1,0 +1,81 @@
+<form class="form" [formGroup]="characterForm" (ngSubmit)="onSubmit()">
+  <div class="form__fields">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+      @if(characterForm.get('name')?.invalid && characterForm.get('name')?.touched){
+      <mat-error>
+        @if(characterForm.get('name')?.errors?.['required']){
+        <span>Name is required.</span>
+        }
+        @if(characterForm.get('name')?.errors?.['minlength']){
+        <span>Name must be at least 3 characters long.</span>
+        }
+      </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Gender</mat-label>
+      <input matInput formControlName="gender">
+      @if(characterForm.get('gender')?.invalid && characterForm.get('gender')?.touched){
+      <mat-error>
+        @if(characterForm.get('gender')?.errors?.['required']){
+        <span>Gender is required.</span>
+        }
+      </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Image</mat-label>
+      <input matInput formControlName="image">
+      @if(characterForm.get('image')?.invalid && characterForm.get('image')?.touched){
+      <mat-error>
+        @if(characterForm.get('image')?.errors?.['required']){
+        <span>Image is required.</span>
+        }
+      </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Species</mat-label>
+      <input matInput formControlName="species">
+      @if(characterForm.get('species')?.invalid && characterForm.get('species')?.touched){
+      <mat-error>
+        @if(characterForm.get('species')?.errors?.['required']){
+        <span>Species is required.</span>
+        }
+      </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Status</mat-label>
+      <input matInput formControlName="status">
+      @if(characterForm.get('status')?.invalid && characterForm.get('status')?.touched){
+      <mat-error>
+        @if(characterForm.get('status')?.errors?.['required']){
+        <span>Status is required.</span>
+        }
+      </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Type</mat-label>
+      <input matInput formControlName="type">
+      @if(characterForm.get('type')?.invalid && characterForm.get('type')?.touched){
+      <mat-error>
+        @if(characterForm.get('type')?.errors?.['required']){
+        <span>Type is required.</span>
+        }
+      </mat-error>
+      }
+    </mat-form-field>
+  </div>
+
+  <button class="form__submit" mat-raised-button color="primary" type="submit"
+    [disabled]="characterForm.invalid">Submit</button>
+</form>

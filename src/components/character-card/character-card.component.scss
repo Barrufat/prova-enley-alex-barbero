@@ -4,8 +4,11 @@
 
   &__image {
     width: 100%;
-    border: solid 3px #161616;
     border-radius: 6px;
+
+    @media (max-width: 390px) {
+      border: solid 3px #161616;
+    }
   }
 
   &__info {
@@ -25,6 +28,6 @@
   &__name {
     color: #c5e8f4;
     font-size: 12px;
-    width: 80%;
+    width: 50%;
   }
 }

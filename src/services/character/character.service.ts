@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiResponse, Character } from './character.model';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 interface SearchState {
   characterName: string;
@@ -33,8 +34,14 @@ export class CharacterService {
   });
   search = this.searchSubject.asObservable();
 
-  constructor(private readonly httpClient: HttpClient) {
-    this.getCharacters();
+  private timeoutId: any;
+  private currentRequest = new AbortController();
+
+  constructor(
+    private readonly httpClient: HttpClient,
+    private readonly router: Router
+  ) {
+    if ((this.charactersSubject.value.characters = [])) this.getCharacters();
   }
 
   updateSearchName(name: string | null) {
@@ -43,7 +50,16 @@ export class CharacterService {
       characterName: name ? name : '',
       page: name ? 1 : this.searchSubject.value.page,
     });
-    this.getCharacters();
+
+    clearTimeout(this.timeoutId);
+
+    if (this.currentRequest) {
+      this.currentRequest.abort();
+    }
+
+    this.timeoutId = setTimeout(() => {
+      this.getCharacters();
+    }, 300);
   }
 
   updateSearchPage(pageIndex: number) {
@@ -64,6 +80,21 @@ export class CharacterService {
       ...this.charactersSubject.value,
       characterDetail: currentCharacter!,
     });
+
+    this.router.navigate(['detail']);
+  }
+
+  deleteCharacter(characterId: number) {
+    this.charactersSubject.next({
+      ...this.charactersSubject.value,
+      characters: this.charactersSubject.value.characters.filter(
+        (character) => character.id !== characterId
+      ),
+    });
+  }
+
+  addCharacter(character: Character) {
+    this.charactersSubject.value.characters.push(character);
   }
 
   public getCharacters(): void {

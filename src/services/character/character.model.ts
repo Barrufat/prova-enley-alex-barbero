@@ -1,8 +1,3 @@
-interface DetailedData {
-  name: string;
-  url: string;
-}
-
 export interface ApiResponse<T> {
   info?: {
     count: number;
@@ -16,8 +11,6 @@ export interface ApiResponse<T> {
 export interface ResourceBase {
   id: number;
   name: string;
-  url: string;
-  created: string;
 }
 
 export interface Character extends ResourceBase {
@@ -25,8 +18,6 @@ export interface Character extends ResourceBase {
   species: string;
   type: string;
   gender: string;
-  origin: DetailedData;
-  location: DetailedData;
   image: string;
   episode: string[];
 }
