@@ -2,8 +2,8 @@
   <img class="character__image" [src]="character.image" [alt]="character.name" />
   <div class="character__info">
     <span class="character__name">{{ character.name }}</span>
-    <mat-icon aria-hidden="false" aria-label="more-info" fontIcon="info" (click)="updateDetailCharacter()"></mat-icon>
+    <mat-icon aria-hidden="false" aria-label="more-info" fontIcon="info" (click)="goToDetail()"></mat-icon>
+    <mat-icon aria-hidden="false" aria-label="edit" fontIcon="edit_note" (click)="goToModify()"></mat-icon>
     <mat-icon aria-hidden="false" aria-label="delete" fontIcon="delete" (click)="eliminateCharacter()"></mat-icon>
-
   </div>
 </article>

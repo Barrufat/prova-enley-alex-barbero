@@ -11,7 +11,6 @@ interface SearchState {
 }
 interface CharactersState {
   characters: Character[];
-  characterDetail: Character | null;
 }
 
 @Injectable({
@@ -23,7 +22,6 @@ export class CharacterService {
 
   private charactersSubject = new BehaviorSubject<CharactersState>({
     characters: [],
-    characterDetail: null,
   });
   characters = this.charactersSubject.asObservable();
 
@@ -72,18 +70,6 @@ export class CharacterService {
     this.getCharacters();
   }
 
-  updateDetailCharacter(characterId: number) {
-    const currentCharacter = this.charactersSubject.value.characters.find(
-      (character) => character.id === characterId
-    );
-    this.charactersSubject.next({
-      ...this.charactersSubject.value,
-      characterDetail: currentCharacter!,
-    });
-
-    this.router.navigate(['detail']);
-  }
-
   deleteCharacter(characterId: number) {
     this.charactersSubject.next({
       ...this.charactersSubject.value,
@@ -95,9 +81,29 @@ export class CharacterService {
 
   addCharacter(character: Character) {
     this.charactersSubject.value.characters.push(character);
+
+    this.router.navigate(['home']);
   }
 
-  public getCharacters(): void {
+  modifyCharacter(modifiedCharacter: Character) {
+    console.log('modifiedCharacter', modifiedCharacter);
+
+    const modifiedCharacters = this.charactersSubject.value.characters.map(
+      (character) =>
+        character.id == modifiedCharacter.id ? modifiedCharacter : character
+    );
+
+    console.log('modifiedCharacters', modifiedCharacters);
+
+    this.charactersSubject.next({
+      ...this.charactersSubject.value,
+      characters: modifiedCharacters,
+    });
+
+    this.router.navigate(['home']);
+  }
+
+  getCharacters() {
     const response = this.httpClient.get<ApiResponse<Character[]>>(
       this.CHARACTER_PAGE_API +
         '?page=' +
@@ -117,5 +123,17 @@ export class CharacterService {
         total: response.info?.count!,
       });
     });
+  }
+
+  getCharacterById(characterId: number): Character {
+    const character = this.charactersSubject.value.characters.find(
+      (character) => character.id === characterId
+    );
+
+    if (!character) {
+      throw Error('Character not found');
+    }
+
+    return character;
   }
 }

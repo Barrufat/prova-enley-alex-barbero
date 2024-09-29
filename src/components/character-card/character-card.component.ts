@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Character } from '../../services/character/character.model';
 import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'character-card',
@@ -10,15 +11,20 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './character-card.component.scss',
 })
 export class CharacterCardComponent {
-  @Input() character!: Character;
-  @Output() updateCharacter: EventEmitter<void> = new EventEmitter();
-  @Output() deleteCharacter: EventEmitter<void> = new EventEmitter();
+  constructor(private readonly router: Router) {}
 
-  updateDetailCharacter() {
-    this.updateCharacter.emit();
-  }
+  @Input() character!: Character;
+  @Output() deleteCharacter: EventEmitter<void> = new EventEmitter();
 
   eliminateCharacter() {
     this.deleteCharacter.emit();
+  }
+
+  goToDetail() {
+    this.router.navigate(['detail', { id: this.character.id }]);
+  }
+
+  goToModify() {
+    this.router.navigate(['modify', { id: this.character.id }]);
   }
 }

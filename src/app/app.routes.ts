@@ -1,14 +1,29 @@
 import { Routes } from '@angular/router';
 import { CharactersPageComponent } from '../pages/characters-page/characters-page.component';
-import { DetailPageComponent } from '../pages/detail-page/detail-page.component';
-import { ModifyPageComponent } from '../pages/modify-page/modify-page.component';
-import { AddNewPageComponent } from '../pages/add-new-page/add-new-page.component';
 
 export const routes: Routes = [
   { path: '', component: CharactersPageComponent },
   { path: 'home', component: CharactersPageComponent },
-  { path: 'detail', component: DetailPageComponent },
-  { path: 'add', component: AddNewPageComponent },
-  { path: 'modify', component: ModifyPageComponent },
+  {
+    path: 'detail',
+    loadComponent: () =>
+      import('../pages/detail-page/detail-page.component').then(
+        (c) => c.DetailPageComponent
+      ),
+  },
+  {
+    path: 'add',
+    loadComponent: () =>
+      import('../pages/add-new-page/add-new-page.component').then(
+        (c) => c.AddNewPageComponent
+      ),
+  },
+  {
+    path: 'modify',
+    loadComponent: () =>
+      import('../pages/modify-page/modify-page.component').then(
+        (c) => c.ModifyPageComponent
+      ),
+  },
   { path: '**', redirectTo: 'home' },
 ];

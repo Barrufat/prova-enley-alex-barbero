@@ -22,10 +22,6 @@ export class CharactersPageComponent implements OnInit {
     });
   }
 
-  onUpdateCharacter(characterId: number) {
-    this.characterService.updateDetailCharacter(characterId);
-  }
-
   onDeleteCharacter(characterId: number) {
     this.characterService.deleteCharacter(characterId);
   }
