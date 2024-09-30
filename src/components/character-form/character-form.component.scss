@@ -1,12 +1,19 @@
+@use "@angular/material" as mat;
+@include mat.core();
+@import "../../custom-theme.scss";
+
 .form {
+  @include mat.all-component-themes($light-custom-theme);
   display: flex;
+  padding-top: 25vh;
+  padding-bottom: 10vh;
   gap: 10px;
   flex-direction: column;
   align-items: end;
 
   &__fields {
     display: grid;
-    gap: 10px;
+    gap: 5px;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
     justify-content: space-around;

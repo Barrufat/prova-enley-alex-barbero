@@ -113,9 +113,12 @@ export class CharacterService {
     );
 
     response.subscribe((response) => {
+      const adaptedCharacters = response.results!.map((character: Character) =>
+        character.type ? character : { ...character, type: 'unknown' }
+      );
       this.charactersSubject.next({
         ...this.charactersSubject.value,
-        characters: response.results!,
+        characters: adaptedCharacters,
       });
 
       this.searchSubject.next({

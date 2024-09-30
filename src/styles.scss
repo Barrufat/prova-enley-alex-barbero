@@ -3,7 +3,7 @@
 @import "./custom-theme.scss";
 
 :root {
-  @include mat.all-component-themes($custom-theme);
+  @include mat.all-component-themes($dark-custom-theme);
 }
 
 *,
@@ -13,8 +13,8 @@
 }
 
 html {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 400;
 }
 
 body {
@@ -22,6 +22,7 @@ body {
   color: #c5e8f4;
   background-color: #001317;
 }
+
 ul,
 li {
   margin: 0;
@@ -29,13 +30,14 @@ li {
   list-style: none;
 }
 
-html,
-body {
-  height: 100%;
+th {
+  font-weight: normal;
 }
-body {
+
+h1,
+h2 {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: large;
 }
 
 .mat-icon {

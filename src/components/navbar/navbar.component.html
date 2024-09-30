@@ -1,8 +1,12 @@
 <nav class="navbar">
   <img class="navbar__hero-title" src="hero-title.png" alt="hero-title" (click)="goToHome()">
   <div class="navbar__controlls">
+    @if(!isAddActive){
     <mat-icon aria-hidden="false" aria-label="add" fontIcon="post_add" (click)="goToAddNew()"></mat-icon>
+    }
+    @if(isHomeActive){
     <character-filter></character-filter>
+    }
 
   </div>
 </nav>
