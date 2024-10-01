@@ -1,0 +1,15 @@
+<article class="character">
+  <img class="character__image" [src]="character.image" [alt]="character.name" />
+  <div class="character__info">
+    <span class="character__name">{{ character.name }}</span>
+
+    <a mat-icon-button [routerLink]="'/character/detail/' + character.id">
+      <mat-icon aria-hidden="false" aria-label="more-info" fontIcon="info"></mat-icon>
+    </a>
+    <a mat-icon-button [routerLink]="'/character/edit/' + character.id">
+      <mat-icon aria-hidden="false" aria-label="edit" fontIcon="edit_note"></mat-icon>
+    </a>
+
+    <mat-icon aria-hidden="false" aria-label="delete" fontIcon="delete" (click)="eliminateCharacter()"></mat-icon>
+  </div>
+</article>

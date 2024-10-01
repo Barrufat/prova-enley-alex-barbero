@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Character } from '../../services/character/character.model';
+import { Character } from '../../../models/character.model';
 import { CharacterCardComponent } from '../character-card/character-card.component';
 
 @Component({

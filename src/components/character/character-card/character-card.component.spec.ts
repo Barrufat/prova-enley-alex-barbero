@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CharacterCardComponent } from './character-card.component';
-import { characterMock } from '../../mocks/character.mock';
+import { characterMock } from '../../../mocks/character.mock';
 
 describe('CharacterCardComponent', () => {
   let component: CharacterCardComponent;

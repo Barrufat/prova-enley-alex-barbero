@@ -1,4 +1,3 @@
 <section class="modify-page-wrapper">
-  <character-form [modifiedCharacter]="modifiedCharacter"
-    (modifyCharacter)="onModifyCharacter($event)"></character-form>
+  <character-form [modifiedCharacter]="modifiedCharacter" (updateCharacter)="modifyCharacter($event)"></character-form>
 </section>

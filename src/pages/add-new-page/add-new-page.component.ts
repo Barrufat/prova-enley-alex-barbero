@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { CharacterFormComponent } from '../../components/character-form/character-form.component';
+import { CharacterFormComponent } from '../../components/character/character-form/character-form.component';
 import { CharacterService } from '../../services/character/character.service';
-import { Character } from '../../services/character/character.model';
+import { Character } from '../../models/character.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,8 +17,8 @@ export class AddNewPageComponent {
     private readonly router: Router
   ) {}
 
-  onAddCharacter(character: Character) {
-    this.characterService.addCharacter(character);
+  addCharacter(character: Partial<Character>) {
+    this.characterService.addCharacter(character as Omit<Character, 'id'>);
     this.router.navigate(['home']);
   }
 }

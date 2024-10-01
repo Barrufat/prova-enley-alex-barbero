@@ -1,6 +1,6 @@
 @use "@angular/material" as mat;
 @include mat.core();
-@import "../../custom-theme.scss";
+@import "../../../custom-theme.scss";
 
 .form {
   @include mat.all-component-themes($light-custom-theme);
@@ -18,7 +18,7 @@
     justify-items: center;
     justify-content: space-around;
 
-    @media (max-width: 390px) {
+    @media (max-width: 480px) {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -29,7 +29,7 @@
     width: 100px;
   }
 
-  @media (max-width: 390px) {
+  @media (max-width: 480px) {
     flex-direction: column;
     align-items: center;
   }

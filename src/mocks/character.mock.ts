@@ -1,4 +1,4 @@
-import { Character } from '../services/character/character.model';
+import { Character } from '../models/character.model';
 
 export const characterMock: Character = {
   episode: [],

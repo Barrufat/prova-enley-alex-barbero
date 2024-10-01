@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Character } from '../../services/character/character.model';
+import { Component, inject, OnInit } from '@angular/core';
+import { Character } from '../../models/character.model';
 import { CharacterService } from '../../services/character/character.service';
-import { CharacterListComponent } from '../../components/character-list/character-list.component';
-import { PaginatorComponent } from '../../components/paginator/paginator.component';
+import { CharacterListComponent } from '../../components/character/character-list/character-list.component';
+import { PaginatorComponent } from '../../components/character/character-paginator/paginator.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'characters-page',
@@ -13,6 +15,7 @@ import { PaginatorComponent } from '../../components/paginator/paginator.compone
 })
 export class CharactersPageComponent implements OnInit {
   characters?: Character[];
+  readonly dialog = inject(MatDialog);
 
   constructor(private readonly characterService: CharacterService) {}
 
@@ -22,7 +25,11 @@ export class CharactersPageComponent implements OnInit {
     });
   }
 
-  onDeleteCharacter(characterId: number) {
-    this.characterService.deleteCharacter(characterId);
+  openDialog(characterId: number) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      result && this.characterService.deleteCharacter(characterId);
+    });
   }
 }

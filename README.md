@@ -25,3 +25,8 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+Parte 1:
+
+Describe los desafíos del SEO en Single Page Applications (SPAs) como las construidas con
+Angular, y explica al menos tres estrategias para mejorar el SEO de tales aplicaciones.

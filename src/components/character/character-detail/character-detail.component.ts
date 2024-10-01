@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Character } from '../../services/character/character.model';
+import { Character } from '../../../models/character.model';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 
@@ -11,11 +11,7 @@ import { Router } from '@angular/router';
   styleUrl: './character-detail.component.scss',
 })
 export class CharacterDetailComponent {
-  constructor(private readonly router: Router) {}
+  constructor() {}
 
   @Input() character!: Character;
-
-  goToModify() {
-    this.router.navigate(['modify']);
-  }
 }

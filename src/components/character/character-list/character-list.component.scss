@@ -39,7 +39,7 @@
     background-position: bottom;
 
     &--front {
-      background-image: url("../../../public/portal-front.png");
+      background-image: url("../../../../public/portal-front.png");
       z-index: 2;
       height: 110px;
     }
@@ -52,7 +52,7 @@
     }
 
     &--back {
-      background-image: url("../../../public/portal-back.png");
+      background-image: url("../../../../public/portal-back.png");
       z-index: -1;
     }
   }

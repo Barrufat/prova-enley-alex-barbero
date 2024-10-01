@@ -33,14 +33,5 @@ export class NavbarComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
     this.isMobile = window.innerWidth <= 480;
-    console.log('Window resized to:', window.innerWidth);
-  }
-
-  goToHome() {
-    this.router.navigate(['home']);
-  }
-
-  goToAddNew() {
-    this.router.navigate(['add']);
   }
 }

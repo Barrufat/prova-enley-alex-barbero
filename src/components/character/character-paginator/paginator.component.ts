@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CharacterService } from '../../services/character/character.service';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { CharacterService } from '../../../services/character/character.service';
 
 @Component({
   selector: 'character-paginator',

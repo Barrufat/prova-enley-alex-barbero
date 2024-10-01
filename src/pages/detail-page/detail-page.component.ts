@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Character } from '../../services/character/character.model';
-import { CharacterDetailComponent } from '../../components/character-detail/character-detail.component';
+import { Character } from '../../models/character.model';
+import { CharacterDetailComponent } from '../../components/character/character-detail/character-detail.component';
 import { CharacterService } from '../../services/character/character.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -22,9 +22,10 @@ export class DetailPageComponent implements OnInit {
   ngOnInit() {
     const characterId = this.route.snapshot.paramMap.get('id');
 
-    console.log('characterId', characterId);
-    this.character = this.characterService.getCharacterById(
-      Number(characterId!)
-    );
+    this.characterService.characters.subscribe((charactersState) => {
+      this.character = charactersState.character;
+    });
+
+    this.characterService.getCharacterById(Number(characterId!));
   }
 }

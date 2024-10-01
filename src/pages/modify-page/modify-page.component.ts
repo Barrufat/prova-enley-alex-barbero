@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CharacterFormComponent } from '../../components/character-form/character-form.component';
-import { Character } from '../../services/character/character.model';
+import { CharacterFormComponent } from '../../components/character/character-form/character-form.component';
+import { Character } from '../../models/character.model';
 import { CharacterService } from '../../services/character/character.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -23,13 +23,19 @@ export class ModifyPageComponent implements OnInit {
   ngOnInit() {
     const characterId = this.route.snapshot.paramMap.get('id');
 
-    this.modifiedCharacter = this.characterService.getCharacterById(
-      Number(characterId!)
-    );
+    this.characterService.getCharacterById(Number(characterId!));
+    this.characterService.characters.subscribe((charactersState) => {
+      this.modifiedCharacter = charactersState.character;
+    });
   }
 
-  onModifyCharacter(character: Character) {
-    this.characterService.modifyCharacter(character);
+  modifyCharacter(character: Partial<Character>) {
+    const newCharacter: Character = {
+      ...(character as Omit<Character, 'id'>),
+      id: this.modifiedCharacter.id,
+    };
+
+    this.characterService.modifyCharacter(newCharacter);
     this.router.navigate(['home']);
   }
 }
