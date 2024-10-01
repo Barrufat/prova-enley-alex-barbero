@@ -18,7 +18,6 @@ import { CharacterService } from '../../services/character/character.service';
     MatIconModule,
   ],
   templateUrl: './filter.component.html',
-  styleUrl: './filter.component.scss',
 })
 export class FilterComponent {
   characterName = new FormControl('');

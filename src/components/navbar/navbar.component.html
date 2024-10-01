@@ -1,12 +1,30 @@
 <nav class="navbar">
-  <img class="navbar__hero-title" src="hero-title.png" alt="hero-title" (click)="goToHome()">
-  <div class="navbar__controlls">
-    @if(!isAddActive){
-    <mat-icon aria-hidden="false" aria-label="add" fontIcon="post_add" (click)="goToAddNew()"></mat-icon>
-    }
-    @if(isHomeActive){
-    <character-filter></character-filter>
-    }
+  <ul class="navbar__controlls">
+    <li>
+      <a href="/home"><img class="navbar__hero-title" src="hero-title.png" alt="hero-title"></a>
+    </li>
 
-  </div>
+    @if(!isAddActive){
+    <li>
+      <a href="/add"><mat-icon aria-hidden="false" aria-label="add" fontIcon="post_add"></mat-icon></a>
+    </li>
+
+    }
+  </ul>
+
+  @if(isHomeActive){
+  @if(!isMobile ){
+  <character-filter></character-filter>}
+  @if(isMobile){
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-description>
+        <mat-icon>search</mat-icon>
+        Search by name
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <character-filter></character-filter>
+  </mat-expansion-panel>
+  }
+  }
 </nav>

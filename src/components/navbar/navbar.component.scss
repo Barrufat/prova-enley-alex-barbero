@@ -7,34 +7,40 @@
   padding: 20px;
   background: linear-gradient(to top, #00131700 5%, #0013175d 20%, #001317 55%);
   width: 100%;
+  gap: 10px;
   justify-content: space-between;
   align-items: flex-start;
 
   &__controlls {
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
   }
 
   &__hero-title {
     width: 200px;
     cursor: pointer;
 
-    @media (max-width: 390px) {
-      width: 100%;
+    @media (max-width: 480px) {
+      width: 75vw;
     }
   }
 
-  @media (max-width: 390px) {
-    padding: 15px;
+  @media (max-width: 480px) {
     flex-direction: column;
     align-items: center;
     gap: 10px;
   }
 }
 
+.mat-expansion-panel-header-description {
+  justify-content: space-around;
+}
+
 .mat-icon {
-  font-size: xx-large;
-  height: 50px;
-  width: 50px;
+  font-size: 30px;
+  height: 30px;
+  width: 30px;
 }

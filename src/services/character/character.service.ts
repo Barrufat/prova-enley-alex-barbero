@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { ApiResponse, Character } from './character.model';
 import { BehaviorSubject } from 'rxjs';
-import { Router } from '@angular/router';
 
 interface SearchState {
   characterName: string;
   page: number;
   total: number;
 }
-interface CharactersState {
+export interface CharactersState {
   characters: Character[];
 }
 
@@ -20,7 +20,7 @@ export class CharacterService {
   private readonly CHARACTER_PAGE_API =
     'https://rickandmortyapi.com/api/character/';
 
-  private charactersSubject = new BehaviorSubject<CharactersState>({
+  charactersSubject = new BehaviorSubject<CharactersState>({
     characters: [],
   });
   characters = this.charactersSubject.asObservable();
@@ -35,10 +35,7 @@ export class CharacterService {
   private timeoutId: any;
   private currentRequest = new AbortController();
 
-  constructor(
-    private readonly httpClient: HttpClient,
-    private readonly router: Router
-  ) {
+  constructor(private readonly httpClient: HttpClient) {
     if ((this.charactersSubject.value.characters = [])) this.getCharacters();
   }
 
@@ -79,31 +76,25 @@ export class CharacterService {
     });
   }
 
-  addCharacter(character: Character) {
+  addCharacter(character: Character): Character[] {
     this.charactersSubject.value.characters.push(character);
 
-    this.router.navigate(['home']);
+    return this.charactersSubject.value.characters;
   }
 
   modifyCharacter(modifiedCharacter: Character) {
-    console.log('modifiedCharacter', modifiedCharacter);
-
     const modifiedCharacters = this.charactersSubject.value.characters.map(
       (character) =>
         character.id == modifiedCharacter.id ? modifiedCharacter : character
     );
 
-    console.log('modifiedCharacters', modifiedCharacters);
-
     this.charactersSubject.next({
       ...this.charactersSubject.value,
       characters: modifiedCharacters,
     });
-
-    this.router.navigate(['home']);
   }
 
-  getCharacters() {
+  getCharacters(): Character[] {
     const response = this.httpClient.get<ApiResponse<Character[]>>(
       this.CHARACTER_PAGE_API +
         '?page=' +
@@ -126,6 +117,8 @@ export class CharacterService {
         total: response.info?.count!,
       });
     });
+
+    return this.charactersSubject.value.characters;
   }
 
   getCharacterById(characterId: number): Character {
@@ -133,10 +126,6 @@ export class CharacterService {
       (character) => character.id === characterId
     );
 
-    if (!character) {
-      throw Error('Character not found');
-    }
-
-    return character;
+    return character!;
   }
 }
