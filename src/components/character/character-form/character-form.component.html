@@ -2,7 +2,7 @@
   <div class="form__fields">
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
-      <input matInput formControlName="name">
+      <input matInput formControlName="name" class="form__input-name">
       @if(characterForm.get('name')?.invalid && characterForm.get('name')?.touched){
       <mat-error>
         @if(characterForm.get('name')?.errors?.['required']){

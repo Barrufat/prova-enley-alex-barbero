@@ -44,7 +44,18 @@ export const charactersMock: Character[] = [
   },
 ];
 
-export const addedCharactersMock: Character[] = [
+export const modifiedCharacterMock: Character = {
+  id: 2,
+  name: 'Morty Modified',
+  status: 'Alive',
+  species: 'Human',
+  type: 'unknown',
+  gender: 'Male',
+  image: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
+  episode: [],
+};
+
+export const modifiedCharactersMock: Character[] = [
   {
     id: 1,
     name: 'Rick Sanchez',
@@ -57,7 +68,7 @@ export const addedCharactersMock: Character[] = [
   },
   {
     id: 2,
-    name: 'Morty Smith',
+    name: 'Morty Modified',
     status: 'Alive',
     species: 'Human',
     type: 'unknown',
@@ -74,15 +85,5 @@ export const addedCharactersMock: Character[] = [
     gender: 'Female',
     image: 'https://rickandmortyapi.com/api/character/avatar/3.jpeg',
     episode: [],
-  },
-  {
-    episode: [],
-    gender: 'unknown',
-    id: 33,
-    image: 'unknown',
-    name: 'Test Character',
-    species: 'unknown',
-    status: 'unknown',
-    type: 'unknown',
   },
 ];

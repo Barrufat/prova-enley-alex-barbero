@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
-import { CharacterService, CharactersState } from './character.service';
+import { CharacterService } from './character.service';
 import { provideHttpClient } from '@angular/common/http';
 import {
-  addedCharactersMock,
-  characterMock,
   charactersMock,
+  modifiedCharacterMock,
+  modifiedCharactersMock,
 } from '../../mocks/character.mock';
 
 describe('CharacterService', () => {
@@ -27,13 +27,16 @@ describe('CharacterService', () => {
     expect(result).toBe(charactersMock);
   });
 
-  it('should add a new character correctly', () => {
-    const result = service.addCharacter(characterMock);
-    expect(result).toEqual(addedCharactersMock);
+  it('should modify a character correctly', () => {
+    const result = service.modifyCharacter(modifiedCharacterMock);
+    expect(service.charactersSubject.value.characters).toEqual(
+      modifiedCharactersMock
+    );
   });
 
   it('should return a character by its Id correctly', () => {
-    const result = service.getCharacterById(33);
-    expect(result).toEqual(characterMock);
+    service.getCharacterById(1);
+    const expectedCharacter = charactersMock[0];
+    expect(service.charactersSubject.value.character).toBe(expectedCharacter);
   });
 });
